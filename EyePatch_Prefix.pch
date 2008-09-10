@@ -1,0 +1,7 @@
+//
+// Prefix header for all source files of the 'EyePatch' target in the 'EyePatch' project
+//
+
+#ifdef __OBJC__
+    #import <Cocoa/Cocoa.h>
+#endif
