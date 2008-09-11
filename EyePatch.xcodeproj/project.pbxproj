@@ -8,9 +8,9 @@
 
 /* Begin PBXBuildFile section */
 		000FFC070E74E85E00063F63 /* AppController.m in Sources */ = {isa = PBXBuildFile; fileRef = 000FFC060E74E85E00063F63 /* AppController.m */; };
-		000FFC150E74ED4400063F63 /* eyeicon1.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 000FFC140E74ED4400063F63 /* eyeicon1.jpg */; };
-		000FFC170E74ED5500063F63 /* eyepatch.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 000FFC160E74ED5500063F63 /* eyepatch.jpg */; };
 		000FFDBB0E779BA000063F63 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 000FFDBA0E779BA000063F63 /* Security.framework */; };
+		00219A670E7997C40074224E /* eyeicon.gif in Resources */ = {isa = PBXBuildFile; fileRef = 00219A660E7997C40074224E /* eyeicon.gif */; };
+		00219A6E0E799C890074224E /* eyepatch.gif in Resources */ = {isa = PBXBuildFile; fileRef = 00219A6D0E799C890074224E /* eyepatch.gif */; };
 		1DDD58160DA1D0A300B32029 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1DDD58140DA1D0A300B32029 /* MainMenu.xib */; };
 		8D11072B0486CEB800E47090 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 089C165CFE840E0CC02AAC07 /* InfoPlist.strings */; };
 		8D11072D0486CEB800E47090 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 29B97316FDCFA39411CA2CEA /* main.m */; settings = {ATTRIBUTES = (); }; };
@@ -20,9 +20,9 @@
 /* Begin PBXFileReference section */
 		000FFC050E74E85E00063F63 /* AppController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppController.h; sourceTree = "<group>"; };
 		000FFC060E74E85E00063F63 /* AppController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppController.m; sourceTree = "<group>"; };
-		000FFC140E74ED4400063F63 /* eyeicon1.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = eyeicon1.jpg; sourceTree = "<group>"; };
-		000FFC160E74ED5500063F63 /* eyepatch.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = eyepatch.jpg; sourceTree = "<group>"; };
 		000FFDBA0E779BA000063F63 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = /System/Library/Frameworks/Security.framework; sourceTree = "<absolute>"; };
+		00219A660E7997C40074224E /* eyeicon.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = eyeicon.gif; sourceTree = "<group>"; };
+		00219A6D0E799C890074224E /* eyepatch.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = eyepatch.gif; sourceTree = "<group>"; };
 		089C165DFE840E0CC02AAC07 /* English */ = {isa = PBXFileReference; fileEncoding = 10; lastKnownFileType = text.plist.strings; name = English; path = English.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		1058C7A1FEA54F0111CA2CBB /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = /System/Library/Frameworks/Cocoa.framework; sourceTree = "<absolute>"; };
 		13E42FB307B3F0F600E4EEF1 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = /System/Library/Frameworks/CoreData.framework; sourceTree = "<absolute>"; };
@@ -108,8 +108,8 @@
 		29B97317FDCFA39411CA2CEA /* Resources */ = {
 			isa = PBXGroup;
 			children = (
-				000FFC160E74ED5500063F63 /* eyepatch.jpg */,
-				000FFC140E74ED4400063F63 /* eyeicon1.jpg */,
+				00219A6D0E799C890074224E /* eyepatch.gif */,
+				00219A660E7997C40074224E /* eyeicon.gif */,
 				8D1107310486CEB800E47090 /* Info.plist */,
 				089C165CFE840E0CC02AAC07 /* InfoPlist.strings */,
 				1DDD58140DA1D0A300B32029 /* MainMenu.xib */,
@@ -171,8 +171,8 @@
 			files = (
 				8D11072B0486CEB800E47090 /* InfoPlist.strings in Resources */,
 				1DDD58160DA1D0A300B32029 /* MainMenu.xib in Resources */,
-				000FFC150E74ED4400063F63 /* eyeicon1.jpg in Resources */,
-				000FFC170E74ED5500063F63 /* eyepatch.jpg in Resources */,
+				00219A670E7997C40074224E /* eyeicon.gif in Resources */,
+				00219A6E0E799C890074224E /* eyepatch.gif in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

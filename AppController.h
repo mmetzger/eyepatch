@@ -16,6 +16,7 @@
 	NSArray *files;
 	IBOutlet NSMenu *theMenu;
 	NSMenuItem *statusMenuItem;
+	NSMenuItem *actionMenuItem;
 }
 
 - (IBAction)updateiSightStatus:(id)sender;

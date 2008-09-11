@@ -18,6 +18,7 @@ static AuthorizationRef authorizationRef = NULL;
 	[statusItem release];
 	[enabledMenuIcon release];
 	[disabledMenuIcon release];
+	[actionMenuItem release];
 	[files release];
 	[super dealloc];
 }
@@ -31,8 +32,8 @@ static AuthorizationRef authorizationRef = NULL;
 	// Load the icons from the bundle resources
 	
 	NSBundle *bundle = [NSBundle bundleForClass:[self class]];
-	NSString *enabledIconPath = [bundle pathForResource:@"eyeicon1" ofType:@"jpg"];
-	NSString *disabledIconPath = [bundle pathForResource:@"eyepatch" ofType:@"jpg"];
+	NSString *enabledIconPath = [bundle pathForResource:@"eyeicon" ofType:@"gif"];
+	NSString *disabledIconPath = [bundle pathForResource:@"eyepatch" ofType:@"gif"];
 	
 	enabledMenuIcon = [[NSImage alloc] initWithContentsOfFile:enabledIconPath];
 	disabledMenuIcon = [[NSImage alloc] initWithContentsOfFile:disabledIconPath];
@@ -50,16 +51,25 @@ static AuthorizationRef authorizationRef = NULL;
 	[statusItem setToolTip:@"iSightStatus"];
 	
 	[statusItem setMenu:theMenu];
-	statusMenuItem = [[NSMenuItem alloc] initWithTitle:@"Unknown"
-												action:@selector(updateiSightStatus:) keyEquivalent:@""];
+	
+	// Menu item for the state of the iSight Camera
+	statusMenuItem = [[NSMenuItem alloc] initWithTitle:@"" action:nil keyEquivalent:@""];
 	[statusMenuItem setTarget:self];
-	[theMenu insertItem:statusMenuItem atIndex:1];
+	
+	[theMenu insertItem:statusMenuItem atIndex:0];
+	
+	// Menu item for the appropriate action to use on the iSight Camera (enable or disable)
+	actionMenuItem = [[NSMenuItem alloc] initWithTitle:@"" action:nil keyEquivalent:@""];
+	[actionMenuItem setTarget:self];
+	
+	[theMenu insertItem:actionMenuItem atIndex:2];
+	
 	
 	[self updateiSightStatus:nil];
 	
 }
 
-- (void)changeiSightPermissions:(NSArray *)fileList :(NSString *)permissionString
+- (void)changeiSightPermissions:(NSArray *)fileList permissions:(NSString *)permissionString
 {
 	
 	// This is all pretty ugly and doesn't really work the way I want it to.  This is currently using the AuthorizationCreate / AuthorizationExecuteWithPrivileges which is not recommended for 
@@ -107,7 +117,7 @@ static AuthorizationRef authorizationRef = NULL;
 	}
 	else
 	{
-		NSLog(@"Already authorized");
+		NSLog(@"Already authorized - Should not hit this state as authorization is dropped immediately after completeing method call");
 		status = noErr;
 	}
 	
@@ -141,7 +151,10 @@ static AuthorizationRef authorizationRef = NULL;
 		}
 	}
 	
-	// Need to add a bit of error handling
+	// Free the Authorization Credentials
+	NSLog(@"Dropping privileged authorization");
+	AuthorizationFree(authorizationRef, kAuthorizationFlagDefaults);
+	authorizationRef = NULL;
 }
 
 
@@ -150,7 +163,7 @@ static AuthorizationRef authorizationRef = NULL;
 	NSLog(@"In Enable iSight");
 	
 	// Change permissions to the unix equivalent of -r-xr--r--
-	[self changeiSightPermissions:files :@"0544"];
+	[self changeiSightPermissions:files permissions:@"0544"];
 
 	NSLog(@"Task finished - updating status");
 	
@@ -162,7 +175,7 @@ static AuthorizationRef authorizationRef = NULL;
 	NSLog(@"In Disable iSight");
 	
 	// Change permissions to the unix equivalent of ----------
-	[self changeiSightPermissions:files :@"0000"];
+	[self changeiSightPermissions:files permissions:@"0000"];
 		
 	NSLog(@"Task finished - updating status");
 	
@@ -205,12 +218,17 @@ static AuthorizationRef authorizationRef = NULL;
 	// Modify status icon items based on iSight state
 	if (isCameraEnabled)
 	{
-		[statusMenuItem setTitle:[NSString stringWithString:@"Enabled"]];
+		[statusMenuItem setTitle:[NSString stringWithString:@"iSight Status: Enabled"]];
 		[statusItem setImage:enabledMenuIcon];
+		[actionMenuItem setTitle:[NSString stringWithString:@"Disable iSight"]];
+		[actionMenuItem setAction:@selector(disableiSight:)];
 	} else {
-		[statusMenuItem setTitle:[NSString stringWithString:@"Disabled"]];
+		[statusMenuItem setTitle:[NSString stringWithString:@"iSight Status: Disabled"]];
 		[statusItem setImage:disabledMenuIcon];
+		[actionMenuItem setTitle:[NSString stringWithString:@"Enable iSight"]];
+		[actionMenuItem setAction:@selector(enableiSight:)];
 	}
 }
+
 	
 @end
