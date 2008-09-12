@@ -32,8 +32,8 @@ static AuthorizationRef authorizationRef = NULL;
 	// Load the icons from the bundle resources
 	
 	NSBundle *bundle = [NSBundle bundleForClass:[self class]];
-	NSString *enabledIconPath = [bundle pathForResource:@"eyeicon" ofType:@"gif"];
-	NSString *disabledIconPath = [bundle pathForResource:@"eyepatch" ofType:@"gif"];
+	NSString *enabledIconPath = [bundle pathForResource:@"eyeopen" ofType:@"gif"];
+	NSString *disabledIconPath = [bundle pathForResource:@"eyeclosed" ofType:@"gif"];
 	
 	enabledMenuIcon = [[NSImage alloc] initWithContentsOfFile:enabledIconPath];
 	disabledMenuIcon = [[NSImage alloc] initWithContentsOfFile:disabledIconPath];
