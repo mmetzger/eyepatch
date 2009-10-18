@@ -3,7 +3,10 @@
 //  EyePatch
 //
 //  Created by Mike Metzger on 9/7/08.
-//  Copyright 2008 Techplay.net. All rights reserved.
+//  Updated 10/18/09 with Snow Leopard support.
+//  Copyright 2008-2009 Techplay.net. All rights reserved.
+//
+//  Original concept & implementation in AppleScript from Techslaves.org
 //
 
 #import "AppController.h"
@@ -27,7 +30,9 @@ static AuthorizationRef authorizationRef = NULL;
 {
 	// Create the list of files we'll be checking / modifying permissions of for iSight status
 	files = [[NSArray arrayWithObjects:@"/System/Library/QuickTime/QuickTimeUSBVDCDigitizer.component/Contents/MacOS/QuickTimeUSBVDCDigitizer",
-			  @"/System/Library/PrivateFrameworks/CoreMediaIOServicesPrivate.framework/Versions/A/Resources/VDC.plugin/Contents/MacOS/VDC", nil] retain];
+			  @"/System/Library/PrivateFrameworks/CoreMediaIOServicesPrivate.framework/Versions/A/Resources/VDC.plugin/Contents/MacOS/VDC",
+			  @"/System/Library/PrivateFrameworks/CoreMediaIOServices.framework/Versions/A/Resources/VDC.plugin/Contents/MacOS/VDC", // Only needed for Snow Leopard
+			  nil] retain];
 	
 	// Load the icons from the bundle resources
 	
