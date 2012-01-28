@@ -31,7 +31,9 @@ static AuthorizationRef authorizationRef = NULL;
 	// Create the list of files we'll be checking / modifying permissions of for iSight status
 	files = [[NSArray arrayWithObjects:@"/System/Library/QuickTime/QuickTimeUSBVDCDigitizer.component/Contents/MacOS/QuickTimeUSBVDCDigitizer",
 			  @"/System/Library/PrivateFrameworks/CoreMediaIOServicesPrivate.framework/Versions/A/Resources/VDC.plugin/Contents/MacOS/VDC",
-			  @"/System/Library/PrivateFrameworks/CoreMediaIOServices.framework/Versions/A/Resources/VDC.plugin/Contents/MacOS/VDC", // Only needed for Snow Leopard
+			  @"/System/Library/PrivateFrameworks/CoreMediaIOServices.framework/Versions/A/Resources/VDC.plugin/Contents/MacOS/VDC", // Only for 10.6+
+              @"/System/Library/Frameworks/CoreMediaIO.framework/Versions/A/Resources/VDC.plugin/Contents/MacOS/VDC",
+              // Only needed for Lion
 			  nil] retain];
 	
 	// Load the icons from the bundle resources
