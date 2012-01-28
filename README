@@ -1,17 +1,19 @@
-EyePatch is a Cocoa based tool to Enable / Disable the built-in iSight camera on Leopard / Snow Leopard based machines (will not work with Tiger.)  
+EyePatch is a Cocoa based tool to Enable / Disable the built-in iSight camera on Leopard / Snow Leopard / Lion based machines (will not work with Tiger.)  
 
-The tool works by changing the permissions on two files:
+The tool works by changing the permissions on up to four files:
 
+(Leopard & above)
 /System/Library/QuickTime/QuickTimeUSBVDCDigitizer.component/Contents/MacOS/QuickTimeUSBVDCDigitizer
 /System/Library/PrivateFrameworks/CoreMediaIOServicesPrivate.framework/Versions/A/Resources/VDC.plugin/Contents/MacOS/VDC
-
-If you're using Snow Leopard, it will also update permissions on:
-
+(Snow Leopard & above)
 /System/Library/PrivateFrameworks/CoreMediaIOServices.framework/Versions/A/Resources/VDC.plugin/Contents/MacOS/VDC
+(Lion)
+/System/Library/Frameworks/CoreMediaIO.framework/Versions/A/Resources/VDC.plugin/Contents/MacOS/VDC
 
 Thanks to techslaves.org for the original inspiration for this tool
 
-Mike Metzger - Techplay.net - 2008-2009
+Mike Metzger - Techplay.net - 2008-2012
 
 Original Release 09/10/2008
 Updated Release 10/18/2009
+Updated Release 01/27/2012
